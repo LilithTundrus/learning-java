@@ -28,19 +28,32 @@ class HelloComponent3 extends JComponent implements MouseMotionListener, ActionL
     int messageX = 125;
     int messageY = 95;
 
-    // Constructor function (always names the same as the class)
-
     JButton button;
 
+    // Variable to hold the current color index for the class
     int colorIndex;
+
+    // Array of colors to choose from for the button-based color change
     static Color[] colors = { Color.red, Color.green, Color.blue, Color.magenta };
 
+    // Constructor function (always names the same as the class)
     public HelloComponent3(String message) {
-        theMessage = message;
+        // Set the local message to that of the `theMessage` variable (this DOES NOT
+        // have to be used in Java)
+        this.theMessage = message;
+
+        // Use the class variable button to create a new button
         button = new JButton("Change the color");
+
+        // use the Jcomponent setLayout function (inherited from base class)
         setLayout(new FlowLayout());
+
+        // Add the button to the window (inherited function)
         add(button);
+        // Add an action listener to the button, passing this component
         button.addActionListener(this);
+
+        // Add a mouse motion listener, passing this component
         addMouseMotionListener(this);
     }
 
@@ -74,10 +87,12 @@ class HelloComponent3 extends JComponent implements MouseMotionListener, ActionL
             colorIndex = 0;
         }
         setForeground(currentColor());
+        // Call a screen repaint on a separate thread
         repaint();
     }
 
     synchronized private Color currentColor() {
+        // Return the current color at the current colorIndex variable
         return colors[colorIndex];
     }
 }
