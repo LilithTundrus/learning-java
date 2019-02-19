@@ -19,6 +19,7 @@ public class HelloBlink {
     }
 }
 
+// Here. implementing the Runnable interface means we intend to have a run() method for running a thread
 class HelloComponent4 extends JComponent implements MouseMotionListener, ActionListener, Runnable {
 
     // String container to hold the string message
@@ -61,13 +62,14 @@ class HelloComponent4 extends JComponent implements MouseMotionListener, ActionL
         // Add a mouse motion listener, passing this component
         addMouseMotionListener(this);
 
-        // Create a new thread for this component
+        // Create a new thread for this component (uses the method named run() in the class by default
         Thread t = new Thread(this);
         // Start the thread!
         t.start();
     }
 
     public void paintComponent(Graphics g) {
+        // Ternary operater, if blinking get the background color, else call the current color method
         g.setColor(blinkState ? getBackground() : currentColor());
         g.drawString(theMessage, messageX, messageY);
     }
