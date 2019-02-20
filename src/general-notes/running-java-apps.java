@@ -22,3 +22,5 @@ public static void main(String[] args) {
 
 // Additionally you can use the java command to launch JAR files the same way,
 // JAR files being archived Java code/assets
+
+// Alternatively in the user's GUI these JAR files can typically be double clicked to make runnable
